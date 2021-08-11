@@ -1,0 +1,108 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 1000;
+            height: 1000;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"group": 4, "id": 9, "label": 9, "shape": "dot", "size": 20, "title": "2001-A-Space-Odyssey.txt"}, {"group": 4, "id": 258, "label": 258, "shape": "dot", "size": 20, "title": "Dark-Star.txt"}, {"group": 4, "id": 43, "label": 43, "shape": "dot", "size": 20, "title": "Alien.txt"}, {"group": 4, "id": 800, "label": 800, "shape": "dot", "size": 20, "title": "Space-Milkshake.txt"}, {"group": 4, "id": 613, "label": 613, "shape": "dot", "size": 20, "title": "Mission-to-Mars.txt"}, {"group": 4, "id": 700, "label": 700, "shape": "dot", "size": 20, "title": "Prometheus.txt"}, {"group": 4, "id": 669, "label": 669, "shape": "dot", "size": 20, "title": "Passengers.txt"}, {"group": 2, "id": 72, "label": 72, "shape": "dot", "size": 20, "title": "Anna-Karenina.txt"}, {"group": 2, "id": 528, "label": 528, "shape": "dot", "size": 20, "title": "Last-Station,-The.txt"}, {"group": 2, "id": 649, "label": 649, "shape": "dot", "size": 20, "title": "Ninotchka.txt"}, {"group": 2, "id": 298, "label": 298, "shape": "dot", "size": 20, "title": "Eastern-Promises.txt"}, {"group": 2, "id": 514, "label": 514, "shape": "dot", "size": 20, "title": "Kundun.txt"}, {"group": 2, "id": 393, "label": 393, "shape": "dot", "size": 20, "title": "Grand-Hotel.txt"}, {"group": 2, "id": 525, "label": 525, "shape": "dot", "size": 20, "title": "Last-Flight,-The.txt"}, {"group": 5, "id": 75, "label": 75, "shape": "dot", "size": 20, "title": "Anonymous.txt"}, {"group": 5, "id": 663, "label": 663, "shape": "dot", "size": 20, "title": "Other-Boleyn-Girl,-The.txt"}, {"group": 5, "id": 305, "label": 305, "shape": "dot", "size": 20, "title": "Elizabeth-The-Golden-Age.txt"}, {"group": 5, "id": 861, "label": 861, "shape": "dot", "size": 20, "title": "Three-Musketeers,-The.txt"}, {"group": 5, "id": 622, "label": 622, "shape": "dot", "size": 20, "title": "Mrs.-Brown.txt"}, {"group": 5, "id": 706, "label": 706, "shape": "dot", "size": 20, "title": "Queen,-The.txt"}, {"group": 3, "id": 128, "label": 128, "shape": "dot", "size": 20, "title": "Belle.txt"}, {"group": 5, "id": 537, "label": 537, "shape": "dot", "size": 20, "title": "Les-Miserables.txt"}, {"group": 0, "id": 318, "label": 318, "shape": "dot", "size": 20, "title": "Excalibur.txt"}, {"group": 0, "id": 218, "label": 218, "shape": "dot", "size": 20, "title": "Clash-of-the-Titans.txt"}, {"group": 0, "id": 573, "label": 573, "shape": "dot", "size": 20, "title": "Man-in-the-Iron-Mask.txt"}, {"group": 6, "id": 78, "label": 78, "shape": "dot", "size": 20, "title": "Apartment,-The.txt"}, {"group": 6, "id": 696, "label": 696, "shape": "dot", "size": 20, "title": "Private-Life-of-Sherlock-Holmes,-The.txt"}, {"group": 6, "id": 288, "label": 288, "shape": "dot", "size": 20, "title": "Double-Indemnity.txt"}, {"group": 6, "id": 714, "label": 714, "shape": "dot", "size": 20, "title": "Rear-Window.txt"}, {"group": 6, "id": 216, "label": 216, "shape": "dot", "size": 20, "title": "Citizen-Kane.txt"}, {"group": 7, "id": 79, "label": 79, "shape": "dot", "size": 20, "title": "Apocalypse-Now.txt"}, {"group": 7, "id": 712, "label": 712, "shape": "dot", "size": 20, "title": "Rambo-First-Blood-II-The-Mission.txt"}, {"group": 7, "id": 692, "label": 692, "shape": "dot", "size": 20, "title": "Predator.txt"}, {"group": 7, "id": 850, "label": 850, "shape": "dot", "size": 20, "title": "Terminator.txt"}, {"group": 0, "id": 86, "label": 86, "shape": "dot", "size": 20, "title": "Army-of-Darkness.txt"}, {"group": 0, "id": 315, "label": 315, "shape": "dot", "size": 20, "title": "Evil-Dead-II-Dead-by-Dawn.txt"}, {"group": 0, "id": 316, "label": 316, "shape": "dot", "size": 20, "title": "Evil-Dead.txt"}, {"group": 0, "id": 560, "label": 560, "shape": "dot", "size": 20, "title": "Lord-of-the-Rings-Fellowship-of-the-Ring,-The.txt"}, {"group": 0, "id": 290, "label": 290, "shape": "dot", "size": 20, "title": "Dragonslayer.txt"}, {"group": 0, "id": 793, "label": 793, "shape": "dot", "size": 20, "title": "Snow-White-and-the-Huntsman.txt"}, {"group": 0, "id": 561, "label": 561, "shape": "dot", "size": 20, "title": "Lord-of-the-Rings-Return-of-the-King.txt"}, {"group": 0, "id": 932, "label": 932, "shape": "dot", "size": 20, "title": "Willow.txt"}, {"group": 2, "id": 87, "label": 87, "shape": "dot", "size": 20, "title": "Arsenic-and-Old-Lace.txt"}, {"group": 3, "id": 112, "label": 112, "shape": "dot", "size": 20, "title": "Barry-Lyndon.txt"}, {"group": 3, "id": 487, "label": 487, "shape": "dot", "size": 20, "title": "Jane-Eyre.txt"}, {"group": 3, "id": 754, "label": 754, "shape": "dot", "size": 20, "title": "Sense-and-Sensibility.txt"}, {"group": 3, "id": 670, "label": 670, "shape": "dot", "size": 20, "title": "Passion-of-Joan-of-Arc,-The.txt"}, {"group": 3, "id": 240, "label": 240, "shape": "dot", "size": 20, "title": "Creation.txt"}, {"group": 3, "id": 586, "label": 586, "shape": "dot", "size": 20, "title": "Mary-Poppins.txt"}, {"group": 10, "id": 207, "label": 207, "shape": "dot", "size": 20, "title": "Chasing-Amy.txt"}, {"group": 10, "id": 219, "label": 219, "shape": "dot", "size": 20, "title": "Clerks.txt"}, {"group": 10, "id": 285, "label": 285, "shape": "dot", "size": 20, "title": "Dogma.txt"}, {"group": 10, "id": 490, "label": 490, "shape": "dot", "size": 20, "title": "Jay-and-Silent-Bob-Strike-Back.txt"}, {"group": 6, "id": 294, "label": 294, "shape": "dot", "size": 20, "title": "Duck-Soup.txt"}, {"group": 6, "id": 438, "label": 438, "shape": "dot", "size": 20, "title": "His-Girl-Friday.txt"}, {"group": 12, "id": 227, "label": 227, "shape": "dot", "size": 20, "title": "Color-of-Night.txt"}, {"group": 12, "id": 780, "label": 780, "shape": "dot", "size": 20, "title": "Single-White-Female.txt"}, {"group": 12, "id": 579, "label": 579, "shape": "dot", "size": 20, "title": "Manhattan-Murder-Mystery.txt"}, {"group": 12, "id": 629, "label": 629, "shape": "dot", "size": 20, "title": "Mute-Witness.txt"}, {"group": 13, "id": 234, "label": 234, "shape": "dot", "size": 20, "title": "Coriolanus.txt"}, {"group": 13, "id": 381, "label": 381, "shape": "dot", "size": 20, "title": "Gladiator.txt"}, {"group": 13, "id": 243, "label": 243, "shape": "dot", "size": 20, "title": "Crouching-Tiger,-Hidden-Dragon.txt"}, {"group": 13, "id": 527, "label": 527, "shape": "dot", "size": 20, "title": "Last-Samurai,-The.txt"}, {"group": 4, "id": 584, "label": 584, "shape": "dot", "size": 20, "title": "Martian,-The.txt"}, {"group": 0, "id": 356, "label": 356, "shape": "dot", "size": 20, "title": "Frozen-(Disney).txt"}, {"group": 0, "id": 519, "label": 519, "shape": "dot", "size": 20, "title": "Labyrinth.txt"}, {"group": 8, "id": 325, "label": 325, "shape": "dot", "size": 20, "title": "Fargo.txt"}, {"group": 8, "id": 710, "label": 710, "shape": "dot", "size": 20, "title": "Raising-Arizona.txt"}, {"group": 8, "id": 650, "label": 650, "shape": "dot", "size": 20, "title": "No-Country-for-Old-Men.txt"}, {"group": 8, "id": 653, "label": 653, "shape": "dot", "size": 20, "title": "O-Brother-Where-Art-Thou.txt"}, {"group": 8, "id": 577, "label": 577, "shape": "dot", "size": 20, "title": "Man-Who-Wasn\u0027t-There,-The.txt"}, {"group": 0, "id": 475, "label": 475, "shape": "dot", "size": 20, "title": "Into-the-Woods.txt"}, {"group": 0, "id": 534, "label": 534, "shape": "dot", "size": 20, "title": "Legend.txt"}, {"group": 9, "id": 494, "label": 494, "shape": "dot", "size": 20, "title": "Jeux-Interdits.txt"}, {"group": 9, "id": 893, "label": 893, "shape": "dot", "size": 20, "title": "Un-Singe-en-Hiver.txt"}, {"group": 9, "id": 531, "label": 531, "shape": "dot", "size": 20, "title": "Le-Diable-par-la-Queue.txt"}, {"group": 9, "id": 641, "label": 641, "shape": "dot", "size": 20, "title": "Ni-vu-ni-connu.txt"}, {"group": 9, "id": 538, "label": 538, "shape": "dot", "size": 20, "title": "Les-Tontons-Flingueurs.txt"}, {"group": 5, "id": 508, "label": 508, "shape": "dot", "size": 20, "title": "King\u0027s-Speech,-The.txt"}, {"group": 3, "id": 744, "label": 744, "shape": "dot", "size": 20, "title": "Saving-Mr.-Banks.txt"}, {"group": 7, "id": 848, "label": 848, "shape": "dot", "size": 20, "title": "Terminator-2-Judgement-Day.txt"}, {"group": 11, "id": 736, "label": 736, "shape": "dot", "size": 20, "title": "Roughshod.txt"}, {"group": 11, "id": 751, "label": 751, "shape": "dot", "size": 20, "title": "Searchers,-The.txt"}, {"group": 11, "id": 844, "label": 844, "shape": "dot", "size": 20, "title": "Tall-in-the-Saddle.txt"}, {"group": 11, "id": 818, "label": 818, "shape": "dot", "size": 20, "title": "Station-West.txt"}, {"group": 1, "id": 805, "label": 805, "shape": "dot", "size": 20, "title": "Star-Trek-First-Contact.txt"}, {"group": 1, "id": 806, "label": 806, "shape": "dot", "size": 20, "title": "Star-Trek-Generations.txt"}, {"group": 1, "id": 807, "label": 807, "shape": "dot", "size": 20, "title": "Star-Trek-Nemesis.txt"}, {"group": 1, "id": 808, "label": 808, "shape": "dot", "size": 20, "title": "Star-Trek-The-Motion-Picture.txt"}, {"group": 1, "id": 809, "label": 809, "shape": "dot", "size": 20, "title": "Star-Trek.txt"}, {"group": 1, "id": 813, "label": 813, "shape": "dot", "size": 20, "title": "Star-Wars-The-Force-Awakens.txt"}, {"group": 1, "id": 810, "label": 810, "shape": "dot", "size": 20, "title": "Star-Wars-A-New-Hope.txt"}, {"group": 1, "id": 811, "label": 811, "shape": "dot", "size": 20, "title": "Star-Wars-Return-of-the-Jedi.txt"}, {"group": 1, "id": 812, "label": 812, "shape": "dot", "size": 20, "title": "Star-Wars-The-Empire-Strikes-Back.txt"}, {"group": 1, "id": 814, "label": 814, "shape": "dot", "size": 20, "title": "Star-Wars-The-Phantom-Menace.txt"}]);
+        edges = new vis.DataSet([{"from": 9, "to": 258, "weight": 1}, {"from": 258, "to": 43, "weight": 1}, {"from": 258, "to": 800, "weight": 1}, {"from": 258, "to": 613, "weight": 1}, {"from": 43, "to": 700, "weight": 1}, {"from": 700, "to": 669, "weight": 1}, {"from": 72, "to": 528, "weight": 1}, {"from": 72, "to": 649, "weight": 1}, {"from": 72, "to": 298, "weight": 1}, {"from": 528, "to": 514, "weight": 1}, {"from": 649, "to": 393, "weight": 1}, {"from": 649, "to": 525, "weight": 1}, {"from": 75, "to": 663, "weight": 1}, {"from": 75, "to": 305, "weight": 1}, {"from": 75, "to": 861, "weight": 1}, {"from": 663, "to": 305, "weight": 1}, {"from": 663, "to": 622, "weight": 1}, {"from": 663, "to": 861, "weight": 1}, {"from": 663, "to": 706, "weight": 1}, {"from": 305, "to": 128, "weight": 1}, {"from": 305, "to": 537, "weight": 1}, {"from": 305, "to": 318, "weight": 1}, {"from": 861, "to": 218, "weight": 1}, {"from": 861, "to": 573, "weight": 1}, {"from": 78, "to": 696, "weight": 1}, {"from": 78, "to": 288, "weight": 1}, {"from": 78, "to": 714, "weight": 1}, {"from": 288, "to": 216, "weight": 1}, {"from": 79, "to": 712, "weight": 1}, {"from": 712, "to": 692, "weight": 1}, {"from": 712, "to": 850, "weight": 1}, {"from": 86, "to": 315, "weight": 1}, {"from": 86, "to": 316, "weight": 1}, {"from": 86, "to": 318, "weight": 1}, {"from": 86, "to": 560, "weight": 1}, {"from": 315, "to": 316, "weight": 1}, {"from": 318, "to": 218, "weight": 1}, {"from": 318, "to": 290, "weight": 1}, {"from": 318, "to": 793, "weight": 1}, {"from": 318, "to": 561, "weight": 1}, {"from": 318, "to": 560, "weight": 1}, {"from": 318, "to": 932, "weight": 1}, {"from": 318, "to": 573, "weight": 1}, {"from": 560, "to": 561, "weight": 1}, {"from": 560, "to": 793, "weight": 1}, {"from": 87, "to": 393, "weight": 1}, {"from": 112, "to": 487, "weight": 1}, {"from": 487, "to": 754, "weight": 1}, {"from": 487, "to": 670, "weight": 1}, {"from": 128, "to": 754, "weight": 1}, {"from": 754, "to": 240, "weight": 1}, {"from": 754, "to": 586, "weight": 1}, {"from": 207, "to": 219, "weight": 1}, {"from": 207, "to": 285, "weight": 1}, {"from": 207, "to": 490, "weight": 1}, {"from": 219, "to": 285, "weight": 1}, {"from": 285, "to": 490, "weight": 1}, {"from": 216, "to": 294, "weight": 1}, {"from": 294, "to": 438, "weight": 1}, {"from": 218, "to": 290, "weight": 1}, {"from": 218, "to": 573, "weight": 1}, {"from": 290, "to": 932, "weight": 1}, {"from": 227, "to": 780, "weight": 1}, {"from": 780, "to": 579, "weight": 1}, {"from": 780, "to": 629, "weight": 1}, {"from": 234, "to": 381, "weight": 1}, {"from": 381, "to": 243, "weight": 1}, {"from": 381, "to": 527, "weight": 1}, {"from": 613, "to": 584, "weight": 1}, {"from": 932, "to": 356, "weight": 1}, {"from": 932, "to": 519, "weight": 1}, {"from": 793, "to": 561, "weight": 1}, {"from": 325, "to": 710, "weight": 1}, {"from": 325, "to": 650, "weight": 1}, {"from": 710, "to": 653, "weight": 1}, {"from": 650, "to": 577, "weight": 1}, {"from": 356, "to": 475, "weight": 1}, {"from": 475, "to": 534, "weight": 1}, {"from": 494, "to": 893, "weight": 1}, {"from": 494, "to": 531, "weight": 1}, {"from": 494, "to": 641, "weight": 1}, {"from": 494, "to": 538, "weight": 1}, {"from": 893, "to": 531, "weight": 1}, {"from": 893, "to": 538, "weight": 1}, {"from": 893, "to": 641, "weight": 1}, {"from": 531, "to": 538, "weight": 1}, {"from": 531, "to": 641, "weight": 1}, {"from": 641, "to": 538, "weight": 1}, {"from": 508, "to": 706, "weight": 1}, {"from": 508, "to": 622, "weight": 1}, {"from": 706, "to": 622, "weight": 1}, {"from": 586, "to": 744, "weight": 1}, {"from": 850, "to": 848, "weight": 1}, {"from": 736, "to": 751, "weight": 1}, {"from": 736, "to": 844, "weight": 1}, {"from": 751, "to": 844, "weight": 1}, {"from": 844, "to": 818, "weight": 1}, {"from": 805, "to": 806, "weight": 1}, {"from": 805, "to": 807, "weight": 1}, {"from": 805, "to": 808, "weight": 1}, {"from": 806, "to": 807, "weight": 1}, {"from": 806, "to": 808, "weight": 1}, {"from": 806, "to": 809, "weight": 1}, {"from": 807, "to": 808, "weight": 1}, {"from": 807, "to": 809, "weight": 1}, {"from": 808, "to": 809, "weight": 1}, {"from": 809, "to": 813, "weight": 1}, {"from": 813, "to": 810, "weight": 1}, {"from": 813, "to": 811, "weight": 1}, {"from": 813, "to": 812, "weight": 1}, {"from": 810, "to": 812, "weight": 1}, {"from": 810, "to": 811, "weight": 1}, {"from": 810, "to": 814, "weight": 1}, {"from": 812, "to": 811, "weight": 1}, {"from": 812, "to": 814, "weight": 1}, {"from": 811, "to": 814, "weight": 1}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>
