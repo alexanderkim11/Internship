@@ -1,0 +1,13 @@
+0	file:/C:/Users/znowak/Documents/Projects/znowak_s21/almawadie/scripts_small/Batman-2.txt	0.5399869150725902	0.008988098946974889	0.4220356408498972	0.02898934513053773
+1	file:/C:/Users/znowak/Documents/Projects/znowak_s21/almawadie/scripts_small/Batman.txt	0.5307645500751664	0.008035650368673491	0.4304710430238385	0.030728756532321568
+2	file:/C:/Users/znowak/Documents/Projects/znowak_s21/almawadie/scripts_small/Spider-Man.txt	0.1381005969272923	0.0031558860945297973	0.8265241217340249	0.03221939524415305
+3	file:/C:/Users/znowak/Documents/Projects/znowak_s21/almawadie/scripts_small/Star-Trek-First-Contact.txt	0.02987591043970866	0.0127011959356173	0.4207580253574319	0.5366648682672421
+4	file:/C:/Users/znowak/Documents/Projects/znowak_s21/almawadie/scripts_small/Star-Trek-Generations.txt	0.029388796334860474	0.006065181174510621	0.4313046647230321	0.5332413577675968
+5	file:/C:/Users/znowak/Documents/Projects/znowak_s21/almawadie/scripts_small/Star-Trek-Nemesis.txt	0.021551724137931036	0.010508226279017353	0.42475208474194276	0.5431879648411089
+6	file:/C:/Users/znowak/Documents/Projects/znowak_s21/almawadie/scripts_small/Star-Trek-The-Motion-Picture.txt	0.013682939020326558	0.006435354881706098	0.2723467177607464	0.707534988337221
+7	file:/C:/Users/znowak/Documents/Projects/znowak_s21/almawadie/scripts_small/Star-Trek.txt	0.03427549051141846	0.017630266966870378	0.4611812479897073	0.4869129945320039
+8	file:/C:/Users/znowak/Documents/Projects/znowak_s21/almawadie/scripts_small/Star-Wars-A-New-Hope.txt	0.017562941302332217	0.48942657442407816	0.4561193923400613	0.036891091933528276
+9	file:/C:/Users/znowak/Documents/Projects/znowak_s21/almawadie/scripts_small/Star-Wars-Return-of-the-Jedi.txt	0.02732278363871923	0.5423144549324449	0.4058162132148806	0.02454654821395521
+10	file:/C:/Users/znowak/Documents/Projects/znowak_s21/almawadie/scripts_small/Star-Wars-The-Empire-Strikes-Back.txt	0.020898487025610684	0.49017411884033474	0.44630631392105485	0.04262108021299975
+11	file:/C:/Users/znowak/Documents/Projects/znowak_s21/almawadie/scripts_small/Star-Wars-The-Force-Awakens.txt	0.014034486136964829	0.2277113745468796	0.7243313412364064	0.03392279807974919
+12	file:/C:/Users/znowak/Documents/Projects/znowak_s21/almawadie/scripts_small/Star-Wars-The-Phantom-Menace.txt	0.0175508804024697	0.6698871865233631	0.29912722006250475	0.013434713011662474
